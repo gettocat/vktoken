@@ -33,8 +33,10 @@ Class vktoken {
         );
     }
 
-    public function link() {
-        return "http://oauth.vk.com/authorize?client_id=$this->app_id&scope=" . static::$scope . "&redirect_uri=http://api.vk.com/blank.html&response_type=code";
+    public function link($scope = '') {
+        if (!$scope)
+            $scope = static::$scope;
+        return "http://oauth.vk.com/authorize?client_id=$this->app_id&scope=" . $scope . "&redirect_uri=http://api.vk.com/blank.html&response_type=code";
     }
 
     /**
